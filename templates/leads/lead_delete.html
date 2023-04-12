@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load tailwind_filters %}
+{% block content %}
+  <div class="max-w-lg mx-auto">
+    <div class="py-5 border-b border-gray-200">
+      <a href="{% url 'leads:lead_list' %}">Go Back to leads</a>
+    </div>
+    <div>
+      <h1 class="text-3xl text-gray-800">Are U sure you want to delete >>> {{ lead.first_name }} ?</h1>
+      <form method="post" class="mt-5">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="w-full text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md">Delete</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

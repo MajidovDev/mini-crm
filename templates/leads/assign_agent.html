@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load tailwind_filters %}
+{% block content %}
+  <div class="container px-10 py-24 mx-auto">
+    <a href="{% url 'leads:lead_list' %}">Go Back to leads</a>
+    <hr class="py-5">
+    <div>
+      <h1 class="text-3xl text-gray-800">Select an Agent</h1>
+      <form method="post" class="mt-5">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="w-full text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
